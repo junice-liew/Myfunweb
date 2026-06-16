@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Junice Liew</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:       #07090f;
+  --bg2:      #0c101c;
+  --surface:  #111827;
+  --surface2: #1a2235;
+  --border:   rgba(99,102,241,0.14);
+  --accent:   #818cf8;
+  --green:    #34d399;
+  --gold:     #fbbf24;
+  --text:     #f1f5f9;
+  --text2:    #94a3b8;
+  --text3:    #475569;
+  --r:        16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface2); border-radius: 100px; }
+
+/* ── Nav ── */
+nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 64px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  background: rgba(7,9,15,0.82);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+.nav-cta {
+  padding: .45rem 1.1rem;
+  background: rgba(99,102,241,.12);
+  border: 1px solid rgba(129,140,248,.3);
+  border-radius: 100px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s;
+}
+.nav-cta:hover { background: rgba(99,102,241,.22); }
+
+/* ── Hero ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 7rem 2rem 4rem;
+  gap: 4rem;
+}
+
+.hero-left { flex: 1; min-width: 0; }
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  background: rgba(52,211,153,.08);
+  border: 1px solid rgba(52,211,153,.22);
+  color: var(--green);
+  padding: .35rem 1rem;
+  border-radius: 100px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.badge-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: blink 2.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:.4; transform:scale(1.6); }
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 6vw, 5.2rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  margin-bottom: .6rem;
+}
+
+.hero h1 .grad {
+  background: linear-gradient(120deg, #818cf8 20%, #34d399 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(.95rem, 1.6vw, 1.15rem);
+  color: var(--text2);
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+.hero-sub strong { color: var(--gold); font-weight: 600; }
+
+.hero-intro {
+  max-width: 540px;
+  font-size: .96rem;
+  color: var(--text2);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+/* Contact pills */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  margin-bottom: 2rem;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .95rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: .8rem;
+  color: var(--text2);
+  text-decoration: none;
+  transition: all .2s;
+}
+.pill:hover {
+  background: var(--surface2);
+  border-color: rgba(129,140,248,.4);
+  color: var(--text);
+}
+.pill svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+/* Buttons */
+.btns { display: flex; gap: .85rem; flex-wrap: wrap; }
+
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .72rem 1.6rem;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  border-radius: 100px;
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 24px rgba(99,102,241,.35);
+  transition: all .2s;
+}
+.btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,.5); }
+
+.btn-s {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .72rem 1.6rem;
+  border: 1px solid var(--border);
+  color: var(--text);
+  border-radius: 100px;
+  font-size: .88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all .2s;
+}
+.btn-s:hover { background: var(--surface); border-color: var(--accent); color: var(--accent); }
+
+/* Hero photo */
+.hero-photo-wrap {
+  flex-shrink: 0;
+  width: clamp(220px, 28vw, 340px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.photo-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, #6366f1, #34d399, #fbbf24, #6366f1);
+  animation: spin 7s linear infinite;
+  z-index: 0;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.photo-mask {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--bg);
+  background: linear-gradient(135deg, #6366f1 0%, #34d399 100%);
+}
+
+.photo-mask img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ── Stats ── */
+.stats-bar {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 3rem 2rem;
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.stat {
+  text-align: center;
+  padding: 1.25rem 1rem;
+}
+
+.stat-num {
+  font-size: clamp(2.2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(120deg, #818cf8 20%, #34d399 80%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: .4rem;
+}
+
+.stat-lbl {
+  font-size: .72rem;
+  color: var(--text3);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+
+/* ── Section wrapper ── */
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+
+.sec-label {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .7rem;
+}
+
+.sec-title {
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: .9rem;
+}
+
+.sec-sub {
+  color: var(--text2);
+  font-size: .96rem;
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 2.5rem;
+}
+
+/* ── Skills ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+#radar-canvas {
+  width: 100%;
+  max-width: 460px;
+  display: block;
+  margin: 0 auto;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+}
+
+.tag {
+  padding: .4rem .85rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  font-size: .78rem;
+  color: var(--text2);
+  font-weight: 500;
+  cursor: default;
+  transition: all .2s;
+}
+.tag:hover {
+  background: rgba(99,102,241,.1);
+  border-color: rgba(129,140,248,.4);
+  color: var(--accent);
+}
+
+/* ── Timeline section wrapper ── */
+.tl-outer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 5rem 0 4rem;
+  overflow: hidden;
+}
+
+.tl-head {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  padding: 0 2rem;
+}
+
+.tl-hint {
+  color: var(--text3);
+  font-size: .85rem;
+  margin-top: .4rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+/* Slider */
+.tl-scroll-wrap {
+  overflow-x: auto;
+  overflow-y: visible;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: .5rem;
+  cursor: grab;
+  /* allow cards to overflow vertically for hover effect */
+  padding-top: 4px;
+}
+.tl-scroll-wrap::-webkit-scrollbar { display: none; }
+.tl-scroll-wrap.dragging { cursor: grabbing; }
+
+.tl-track {
+  display: inline-flex;
+  gap: 1.25rem;
+  padding: 0 2rem 1rem;
+  white-space: nowrap;
+  /* ensure inner elements wrap their text */
+}
+
+.tl-card {
+  display: inline-block;
+  vertical-align: top;
+  white-space: normal;
+  width: 272px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.4rem;
+  position: relative;
+  transition: transform .25s, border-color .25s, box-shadow .25s;
+}
+
+.tl-card::after {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  border-radius: var(--r) var(--r) 0 0;
+  background: linear-gradient(90deg, #6366f1, #34d399);
+  opacity: 0;
+  transition: opacity .25s;
+}
+
+.tl-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(129,140,248,.4);
+  box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.tl-card:hover::after { opacity: 1; }
+
+.tl-year {
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .6rem;
+}
+
+.tl-role {
+  font-size: .96rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: .25rem;
+}
+
+.tl-company {
+  font-size: .8rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: .7rem;
+}
+
+.tl-desc {
+  font-size: .78rem;
+  color: var(--text3);
+  line-height: 1.65;
+}
+
+/* Progress */
+.tl-progress {
+  max-width: 1200px;
+  margin: 1.75rem auto 0;
+  padding: 0 2rem;
+}
+
+.progress-track {
+  height: 3px;
+  background: var(--surface2);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  border-radius: 100px;
+  background: linear-gradient(90deg, #6366f1, #34d399);
+  width: 12%;
+  transition: width .08s linear;
+}
+
+/* ── Experience ── */
+.exp-list { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.exp-card {
+  display: grid;
+  grid-template-columns: 12px 1fr;
+  gap: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.6rem;
+  transition: all .2s;
+}
+
+.exp-card:hover {
+  border-color: rgba(129,140,248,.3);
+  transform: translateX(3px);
+}
+
+.exp-dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px rgba(129,140,248,.5);
+  margin-top: .35rem;
+  flex-shrink: 0;
+}
+
+.exp-period {
+  font-size: .72rem;
+  color: var(--text3);
+  font-weight: 600;
+  letter-spacing: .05em;
+  margin-bottom: .2rem;
+}
+
+.exp-role {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: .15rem;
+}
+
+.exp-co {
+  font-size: .84rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: .65rem;
+}
+
+.exp-desc {
+  font-size: .84rem;
+  color: var(--text2);
+  line-height: 1.75;
+}
+
+/* ── Tools ── */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1rem;
+}
+
+.tool-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.2rem;
+}
+
+.tool-cat {
+  font-size: .68rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: .7rem;
+}
+
+.tool-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.tool-chip {
+  font-size: .75rem;
+  padding: .22rem .6rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text2);
+}
+
+/* ── Footer ── */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 4rem 2rem 3rem;
+  text-align: center;
+}
+
+.footer-headline {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  margin-bottom: .5rem;
+}
+
+.footer-sub {
+  color: var(--text3);
+  font-size: .9rem;
+  max-width: 480px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+.footer-btns { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 3rem; }
+
+.footer-copy { font-size: .78rem; color: var(--text3); }
+
+/* ── Animations ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.fade-up.vis { opacity: 1; transform: translateY(0); }
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  nav { padding: 0 1.25rem; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+
+  .hero {
+    flex-direction: column-reverse;
+    text-align: center;
+    padding: 5.5rem 1.25rem 3rem;
+    gap: 2rem;
+  }
+  .hero-photo-wrap { width: clamp(180px, 55vw, 240px); }
+  .pills { justify-content: center; }
+  .btns  { justify-content: center; }
+  .hero-intro { margin: 0 auto 2rem; }
+
+  .section { padding: 3.5rem 1.25rem; }
+
+  .exp-card { grid-template-columns: 1fr; }
+  .exp-dot  { display: none; }
+
+  .tl-card { width: 240px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav>
+  <a class="nav-logo" href="#top">Junice Liew</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#timeline">Career</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:juniceliew@gmail.com">Hire Me</a>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero" id="top">
+  <div class="hero-left fade-up">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      Open to Strategic Roles
+    </div>
+    <h1 id="about">Junice<br><span class="grad">Liew</span></h1>
+    <p class="hero-sub">
+      Impact-Driven <strong>PR &amp; Marketing Lead</strong><br>
+      AI &middot; Cybersecurity &middot; Fintech &middot; Education &middot; Media
+    </p>
+    <p class="hero-intro">
+      PR &amp; Marketing Strategist with 20+ years building strategies that deliver measurable business outcomes. From seed stage to Zscaler acquisition &mdash; I turn complex technical products into compelling brand narratives that move markets and open doors.
+    </p>
+    <div class="pills">
+<a class="pill" href="mailto:juniceliew@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6 12 13 2 6"/></svg>
+        juniceliew@gmail.com
+      </a>
+      <a class="pill" href="https://www.linkedin.com/in/juniceliew/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <span class="pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Singapore
+      </span>
+    </div>
+    <div class="btns">
+      <a class="btn-p" href="mailto:juniceliew@gmail.com">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6 12 13 2 6"/></svg>
+        Get In Touch
+      </a>
+      <a class="btn-s" href="https://www.linkedin.com/in/juniceliew/" target="_blank" rel="noopener">
+        View LinkedIn →
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-photo-wrap fade-up">
+    <div class="photo-ring"></div>
+    <div class="photo-mask">
+      <img src="Junice Liew 1.png" alt="Junice Liew"
+           onerror="this.style.display='none'">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ STATS ═══════════════════ -->
+<div class="stats-bar" id="stats-bar">
+  <div class="stats-inner">
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="20" data-suffix="+">0+</div>
+      <div class="stat-lbl">Years Experience</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="3400" data-suffix="+" data-comma="1">0+</div>
+      <div class="stat-lbl">Press Captures</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="100" data-suffix="K+">0K+</div>
+      <div class="stat-lbl">Product Users (8 months)</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="80" data-suffix="+">0+</div>
+      <div class="stat-lbl">Tier-1 Publications</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="1" data-suffix="M+">0M+</div>
+      <div class="stat-lbl">Podcast Impressions</div>
+    </div>
+    <div class="stat fade-up">
+      <div class="stat-num" data-to="350" data-suffix="+">0+</div>
+      <div class="stat-lbl">Influencers Managed</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SKILLS ═══════════════════ -->
+<section class="section" id="skills">
+  <div class="sec-label">Capabilities</div>
+  <div class="skills-grid">
+    <div>
+      <h2 class="sec-title">Skills &amp;<br>Expertise</h2>
+      <p class="sec-sub">Two decades spanning cybersecurity, fintech, blockchain, education, and OOH media — across Singapore, Australia, Asia-Pacific, and the USA.</p>
+      <div class="tags">
+        <span class="tag">Enterprise PR Strategy</span>
+        <span class="tag">AI &amp; Cybersecurity Comms</span>
+        <span class="tag">Category Narrative</span>
+        <span class="tag">Tier-1 Media Relations</span>
+        <span class="tag">Executive Thought Leadership</span>
+        <span class="tag">B2B &amp; B2C Influencer Marketing</span>
+        <span class="tag">Podcast Production &amp; Hosting</span>
+        <span class="tag">Crisis Communications</span>
+        <span class="tag">Integrated Campaign Management</span>
+        <span class="tag">Event &amp; Product Launches</span>
+        <span class="tag">Brand Positioning</span>
+        <span class="tag">Digital &amp; Social Marketing</span>
+        <span class="tag">Share of Voice &amp; Earned Media</span>
+        <span class="tag">APAC &amp; USA Cross-Regional</span>
+        <span class="tag">KPI Frameworks &amp; PR Measurement</span>
+        <span class="tag">SEO &amp; Email Marketing</span>
+        <span class="tag">Prompt Engineering</span>
+        <span class="tag">Data-Driven Reporting</span>
+      </div>
+    </div>
+    <div>
+      <canvas id="radar-canvas" aria-label="Skills radar chart"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TIMELINE ═══════════════════ -->
+<div class="tl-outer" id="timeline">
+  <div class="tl-head">
+    <div class="sec-label">Career Journey</div>
+    <h2 class="sec-title">25 Years.<br>One Thread.</h2>
+    <p class="tl-hint">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Drag to explore my career year by year
+    </p>
+  </div>
+
+  <div class="tl-scroll-wrap" id="tl-scroll">
+    <div class="tl-track" id="tl-track"><!-- injected by JS --></div>
+  </div>
+
+  <div class="tl-progress">
+    <div class="progress-track">
+      <div class="progress-fill" id="tl-progress-fill"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════ EXPERIENCE ═══════════════════ -->
+<section class="section" id="experience">
+  <div class="sec-label">Work History</div>
+  <h2 class="sec-title">Professional<br>Experience</h2>
+  <p class="sec-sub">A track record of building from zero — PR functions, marketing teams, brand authority — across sectors and geographies from seed stage to global acquisition.</p>
+
+  <div class="exp-list">
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">May 2026 – Present</div>
+        <div class="exp-role">Strategic Media Adviser (Fractional)</div>
+        <div class="exp-co">StrongKeep &middot; Singapore</div>
+        <div class="exp-desc">Engaged as outcomes-based fractional adviser to move StrongKeep from founder's network to recognised brand in Singapore's SMB community within 90 days. Designing phased brand visibility programmes, press kit assets, CEO thought leadership, and an SMB-focused event and media calendar.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Apr 2023 – Feb 2026</div>
+        <div class="exp-role">Head of PR (Marketing)</div>
+        <div class="exp-co">SquareX &middot; Singapore &middot; Acquired by Zscaler (Nasdaq: ZS) Feb 2026</div>
+        <div class="exp-desc">Built the entire global PR &amp; marketing function from zero at seed stage in 34 months. Achieved an 80% increase in global media impressions, 3,400+ press captures across 80+ Tier-1 publications, and 100K+ product users within 8 months. Produced and hosted 55+ episodes of the Be Fearless Podcast generating 1M+ cumulative impressions. Architected thought leadership campaigns, executed 15+ major international events (RSA, Black Hat, DEF CON), and directly supported acquisition by Zscaler in February 2026.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Oct 2019 – Mar 2023</div>
+        <div class="exp-role">Head of Marketing</div>
+        <div class="exp-co">Overbit.com &middot; Singapore</div>
+        <div class="exp-desc">Built Singapore marketing function from zero to a team of 6 in 5 months. Drove a 15% increase in global user base, 60+ press articles in 18 months, 30% partner ecosystem expansion, and distribution into 4 new regional markets through strategic fintech and crypto alliances.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Sep 2018 – Sep 2019</div>
+        <div class="exp-role">Senior Marketing Manager</div>
+        <div class="exp-co">Switcheo Network &middot; Singapore</div>
+        <div class="exp-desc">Secured 50+ media placements through targeted press campaigns across global blockchain and crypto media. Grew social media audiences 35% QoQ and drove measurable trading volume growth through tiered influencer activation, SEO, and email marketing.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Apr 2017 – Jun 2018</div>
+        <div class="exp-role">Marketing Director</div>
+        <div class="exp-co">ERC International &middot; Singapore</div>
+        <div class="exp-desc">Orchestrated signature events (Super Pitch, Bootcamp) deepening community engagement and driving a 5% increase in student enrolment through integrated PR, earned media, SEO, email, and event campaigns across education sector brands.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Jan 2011 – Mar 2017</div>
+        <div class="exp-role">VP Marketing &amp; Research</div>
+        <div class="exp-co">Moove Media &middot; Singapore</div>
+        <div class="exp-desc">Led the iconic SG50 Celebrations OOH campaign, one of Singapore's most recognised campaigns of the year, reaching millions of commuters nationwide. Established Singapore's inaugural OOH accountability measurement study in partnership with Nielsen Media Research. Contributed to consistent double-digit annual revenue growth over 6 years.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Oct 2004 – Jan 2010</div>
+        <div class="exp-role">Marketing Director</div>
+        <div class="exp-co">EYE Corp (now Ooh! Media) &middot; Australia</div>
+        <div class="exp-desc">Won the Changi Airport Advertising contract through competitive tender — the organisation's highest-value account — significantly expanding APAC market share. Generated $15M+ in revenue through targeted advertising initiatives and integrated PR campaigns across Australian and APAC markets.</div>
+      </div>
+    </div>
+
+    <div class="exp-card fade-up">
+      <div class="exp-dot"></div>
+      <div>
+        <div class="exp-period">Jan 2001 – Jul 2004</div>
+        <div class="exp-role">Marketing &amp; Research Executive</div>
+        <div class="exp-co">JCDecaux Singapore</div>
+        <div class="exp-desc">Joined as the organisation's inaugural marketer and built the Marketing Department from scratch — establishing processes, templates, brand standards, and reporting frameworks that shaped media sales strategy across Singapore's transit advertising network.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════ TOOLS ═══════════════════ -->
+<section class="section" style="padding-top:0;">
+  <div class="sec-label">Technology</div>
+  <h2 class="sec-title" style="margin-bottom:2rem;">Tools &amp;<br>Technology</h2>
+  <div class="tools-grid">
+    <div class="tool-box fade-up">
+      <div class="tool-cat">AI &amp; Automation</div>
+      <div class="tool-items">
+        <span class="tool-chip">ChatGPT</span>
+        <span class="tool-chip">Claude.ai</span>
+        <span class="tool-chip">Gemini</span>
+        <span class="tool-chip">Perplexity</span>
+        <span class="tool-chip">MS Copilot</span>
+        <span class="tool-chip">NotebookLM</span>
+        <span class="tool-chip">Meta.ai</span>
+        <span class="tool-chip">Grok</span>
+      </div>
+    </div>
+    <div class="tool-box fade-up">
+      <div class="tool-cat">CRM &amp; MarTech</div>
+      <div class="tool-items">
+        <span class="tool-chip">HubSpot</span>
+        <span class="tool-chip">ZoomInfo</span>
+        <span class="tool-chip">Apollo.io</span>
+        <span class="tool-chip">Hunter.io</span>
+      </div>
+    </div>
+    <div class="tool-box fade-up">
+      <div class="tool-cat">Creative &amp; Content</div>
+      <div class="tool-items">
+        <span class="tool-chip">Canva</span>
+        <span class="tool-chip">Adobe Acrobat</span>
+        <span class="tool-chip">YouTube</span>
+        <span class="tool-chip">Lumen5</span>
+        <span class="tool-chip">Gamma</span>
+        <span class="tool-chip">Google Flow</span>
+        <span class="tool-chip">VEO 3</span>
+      </div>
+    </div>
+    <div class="tool-box fade-up">
+      <div class="tool-cat">Productivity</div>
+      <div class="tool-items">
+        <span class="tool-chip">MS Office</span>
+        <span class="tool-chip">Google Workspace</span>
+        <span class="tool-chip">Slack</span>
+        <span class="tool-chip">Trello</span>
+        <span class="tool-chip">Asana</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer id="contact">
+  <p class="footer-headline">Let's Work Together</p>
+  <p class="footer-sub">Open to strategic advisory, fractional, and leadership roles in PR, Marketing &amp; Communications across Singapore and globally.</p>
+  <div class="footer-btns">
+    <a class="btn-p" href="mailto:juniceliew@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 6 12 13 2 6"/></svg>
+      Email Junice
+    </a>
+    <a class="btn-s" href="https://www.linkedin.com/in/juniceliew/" target="_blank" rel="noopener">LinkedIn Profile</a>
+  </div>
+  <p class="footer-copy">
+    © 2026 Junice Liew &nbsp;&middot;&nbsp; Singapore  </p>
+</footer>
+
+
+<script>
+/* ═══════════════════════════════════════════════════
+   UTILITY: IntersectionObserver for .fade-up elements
+═══════════════════════════════════════════════════ */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 80);
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+
+/* ═══════════════════════════════════════════════════
+   FEATURE 1: STATS COUNTER (counts up from 0 on scroll)
+═══════════════════════════════════════════════════ */
+function countUp(el) {
+  const target = parseFloat(el.dataset.to);
+  const suffix = el.dataset.suffix || '';
+  const useComma = el.dataset.comma === '1';
+  const duration = 1800;
+  const startTime = performance.now();
+
+  function tick(now) {
+    const elapsed = now - startTime;
+    const t = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 4); // ease-out quartic
+    const val = Math.floor(eased * target);
+    const display = useComma ? val.toLocaleString() : String(val);
+    el.textContent = display + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('[data-to]').forEach(el => countUp(el));
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.25 });
+
+const statsBar = document.getElementById('stats-bar');
+if (statsBar) statsObserver.observe(statsBar);
+
+
+/* ═══════════════════════════════════════════════════
+   FEATURE 2: ANIMATED SKILL RADAR CHART (Canvas)
+═══════════════════════════════════════════════════ */
+const RADAR = [
+  { label: 'PR Strategy',       v: 0.97 },
+  { label: 'Media Relations',   v: 0.96 },
+  { label: 'Brand Storytelling',v: 0.94 },
+  { label: 'Influencer Mktg',  v: 0.91 },
+  { label: 'Event Management',  v: 0.89 },
+  { label: 'Digital Marketing', v: 0.86 },
+  { label: 'Crisis Comms',      v: 0.89 },
+  { label: 'AI & Automation',   v: 0.84 },
+];
+
+let radarProg = 0;
+let radarStarted = false;
+
+function drawRadar(progress) {
+  const canvas = document.getElementById('radar-canvas');
+  if (!canvas) return;
+  const dpr = window.devicePixelRatio || 1;
+  const size = canvas.clientWidth || 400;
+  canvas.width  = size * dpr;
+  canvas.height = size * dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  const cx = size / 2;
+  const cy = size / 2;
+  const R  = size * 0.34; // max radius
+  const n  = RADAR.length;
+  const step = (Math.PI * 2) / n;
+  const start = -Math.PI / 2;
+
+  function pt(i, r) {
+    const a = start + i * step;
+    return [cx + Math.cos(a) * r, cy + Math.sin(a) * r];
+  }
+
+  // Rings
+  [0.25, 0.5, 0.75, 1].forEach(frac => {
+    ctx.beginPath();
+    for (let i = 0; i < n; i++) {
+      const [x, y] = pt(i, R * frac);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.strokeStyle = 'rgba(99,102,241,0.12)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    // Ring label (percentage)
+    if (frac === 1) {
+      ctx.fillStyle = 'rgba(99,102,241,0.2)';
+      ctx.font = `${size * 0.022}px Inter, sans-serif`;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+    }
+  });
+
+  // Axis spokes
+  for (let i = 0; i < n; i++) {
+    const [x, y] = pt(i, R);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(x, y);
+    ctx.strokeStyle = 'rgba(99,102,241,0.1)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Filled shape
+  ctx.beginPath();
+  RADAR.forEach((d, i) => {
+    const [x, y] = pt(i, R * d.v * progress);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  });
+  ctx.closePath();
+  const grad = ctx.createRadialGradient(cx, cy, 0, cx, cy, R);
+  grad.addColorStop(0,   'rgba(99,102,241, 0.55)');
+  grad.addColorStop(0.6, 'rgba(99,102,241, 0.25)');
+  grad.addColorStop(1,   'rgba(52,211,153, 0.15)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(129,140,248,0.85)';
+  ctx.lineWidth   = 2;
+  ctx.stroke();
+
+  // Dot nodes
+  RADAR.forEach((d, i) => {
+    const [x, y] = pt(i, R * d.v * progress);
+    ctx.beginPath();
+    ctx.arc(x, y, size * 0.012, 0, Math.PI * 2);
+    ctx.fillStyle   = '#818cf8';
+    ctx.fill();
+    ctx.strokeStyle = '#07090f';
+    ctx.lineWidth   = 2;
+    ctx.stroke();
+  });
+
+  // Labels
+  const fontSize = Math.max(10, size * 0.027);
+  ctx.font = `600 ${fontSize}px Inter, sans-serif`;
+  ctx.fillStyle = '#94a3b8';
+  ctx.textBaseline = 'middle';
+  RADAR.forEach((d, i) => {
+    const a = start + i * step;
+    const lr = R + size * 0.1;
+    const lx = cx + Math.cos(a) * lr;
+    const ly = cy + Math.sin(a) * lr;
+    ctx.textAlign = Math.cos(a) > 0.05 ? 'left'
+                  : Math.cos(a) < -0.05 ? 'right'
+                  : 'center';
+    ctx.fillText(d.label, lx, ly);
+  });
+}
+
+function animateRadar() {
+  const dur = 1300;
+  const t0  = performance.now();
+  function frame(now) {
+    const p = Math.min((now - t0) / dur, 1);
+    // ease-out cubic
+    radarProg = 1 - Math.pow(1 - p, 3);
+    drawRadar(radarProg);
+    if (p < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
+
+window.addEventListener('load', () => drawRadar(0));
+window.addEventListener('resize', () => drawRadar(radarProg));
+
+const radarObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !radarStarted) {
+      radarStarted = true;
+      animateRadar();
+      radarObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const radarCanvas = document.getElementById('radar-canvas');
+if (radarCanvas) radarObserver.observe(radarCanvas);
+
+
+/* ═══════════════════════════════════════════════════
+   FEATURE 3: CAREER TIMELINE SLIDER (drag to scroll)
+═══════════════════════════════════════════════════ */
+const TL_ITEMS = [
+  {
+    year:    '2001 – 2004',
+    role:    'Marketing & Research Executive',
+    company: 'JCDecaux Singapore',
+    desc:    'The inaugural marketer — built the Marketing Department from scratch, establishing processes, brand standards, and reporting frameworks that shaped Singapore\'s transit advertising strategy for years.',
+  },
+  {
+    year:    '2004 – 2010',
+    role:    'Marketing Director',
+    company: 'EYE Corp (now Ooh! Media) · Australia',
+    desc:    'Won the Changi Airport Advertising contract through competitive tender — the organisation\'s highest-value account. Generated $15M+ in revenue across Australian and APAC markets.',
+  },
+  {
+    year:    '2011 – 2017',
+    role:    'VP Marketing & Research',
+    company: 'Moove Media · Singapore',
+    desc:    'Led the iconic SG50 OOH campaign reaching millions nationwide. Established Singapore\'s first OOH accountability study with Nielsen. Six years of double-digit revenue growth.',
+  },
+  {
+    year:    '2017 – 2018',
+    role:    'Marketing Director',
+    company: 'ERC International · Singapore',
+    desc:    'Orchestrated signature events — Super Pitch and Bootcamp — driving a 5% increase in student enrolment through integrated PR, SEO, and event campaigns.',
+  },
+  {
+    year:    '2018 – 2019',
+    role:    'Senior Marketing Manager',
+    company: 'Switcheo Network · Singapore',
+    desc:    '50+ media placements in global blockchain media. Grew social audiences 35% QoQ through influencer activation, community engagement, and SEO.',
+  },
+  {
+    year:    '2019 – 2023',
+    role:    'Head of Marketing',
+    company: 'Overbit.com · Singapore',
+    desc:    'Built the marketing function from zero to a team of 6. Drove 15% global user base growth, 60+ press articles, and expanded into 4 new regional markets.',
+  },
+  {
+    year:    '2023 – 2026',
+    role:    'Head of PR (Marketing)',
+    company: 'SquareX → Acquired by Zscaler',
+    desc:    '80% ↑ media impressions · 3,400+ press captures · 80+ Tier-1 pubs · 100K users in 8 months · 55+ podcast episodes · 1M+ impressions. Acquisition by Zscaler, Feb 2026.',
+  },
+  {
+    year:    '2026 – Present',
+    role:    'Strategic Media Adviser (Fractional)',
+    company: 'StrongKeep · Singapore',
+    desc:    'Designing a 90-day outcomes-based brand visibility programme, moving StrongKeep from founder\'s network to a recognised brand in Singapore\'s SMB cybersecurity community.',
+  },
+];
+
+(function buildTimeline() {
+  const track = document.getElementById('tl-track');
+  if (!track) return;
+
+  TL_ITEMS.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'tl-card';
+    card.innerHTML = `
+      <div class="tl-year">${item.year}</div>
+      <div class="tl-role">${item.role}</div>
+      <div class="tl-company">${item.company}</div>
+      <div class="tl-desc">${item.desc}</div>
+    `;
+    track.appendChild(card);
+  });
+
+  const scroller = document.getElementById('tl-scroll');
+  const fill     = document.getElementById('tl-progress-fill');
+
+  function updateProgress() {
+    if (!scroller || !fill) return;
+    const max = scroller.scrollWidth - scroller.clientWidth;
+    const pct = max > 0 ? (scroller.scrollLeft / max) * 100 : 0;
+    fill.style.width = Math.max(8, pct) + '%';
+  }
+
+  scroller.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+
+  // Mouse drag
+  let dragging = false, startX = 0, scrollStart = 0;
+
+  scroller.addEventListener('mousedown', e => {
+    dragging    = true;
+    startX      = e.clientX;
+    scrollStart = scroller.scrollLeft;
+    scroller.classList.add('dragging');
+    e.preventDefault();
+  });
+
+  document.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const dx = e.clientX - startX;
+    scroller.scrollLeft = scrollStart - dx;
+  });
+
+  document.addEventListener('mouseup', () => {
+    if (!dragging) return;
+    dragging = false;
+    scroller.classList.remove('dragging');
+  });
+
+  // Touch drag
+  let touchStartX = 0, touchScrollStart = 0;
+
+  scroller.addEventListener('touchstart', e => {
+    touchStartX      = e.touches[0].clientX;
+    touchScrollStart = scroller.scrollLeft;
+  }, { passive: true });
+
+  scroller.addEventListener('touchmove', e => {
+    const dx = e.touches[0].clientX - touchStartX;
+    scroller.scrollLeft = touchScrollStart - dx;
+  }, { passive: true });
+})();
+</script>
+</body>
+</html>
