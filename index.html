@@ -679,7 +679,6 @@ footer {
     <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="mailto:juniceliew@gmail.com">Hire Me</a>
 </nav>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
@@ -785,6 +784,7 @@ footer {
         <span class="tag">APAC &amp; USA Cross-Regional</span>
         <span class="tag">KPI Frameworks &amp; PR Measurement</span>
         <span class="tag">SEO &amp; Email Marketing</span>
+        <span class="tag">Agentic AI</span>
         <span class="tag">Prompt Engineering</span>
         <span class="tag">Data-Driven Reporting</span>
       </div>
@@ -1030,14 +1030,15 @@ if (statsBar) statsObserver.observe(statsBar);
    FEATURE 2: ANIMATED SKILL RADAR CHART (Canvas)
 ═══════════════════════════════════════════════════ */
 const RADAR = [
-  { label: 'PR Strategy',       v: 0.97 },
-  { label: 'Media Relations',   v: 0.96 },
-  { label: 'Brand Storytelling',v: 0.94 },
-  { label: 'Influencer Mktg',  v: 0.91 },
-  { label: 'Event Management',  v: 0.89 },
-  { label: 'Digital Marketing', v: 0.86 },
-  { label: 'Crisis Comms',      v: 0.89 },
-  { label: 'AI & Automation',   v: 0.84 },
+  { label: 'PR Strategy',     v: 0.97 },
+  { label: 'Media Relations', v: 0.96 },
+  { label: 'Storytelling',    v: 0.94 },
+  { label: 'Influencer Mktg',v: 0.91 },
+  { label: 'Event Mgmt',      v: 0.89 },
+  { label: 'Digital Mktg',   v: 0.86 },
+  { label: 'Crisis Comms',   v: 0.89 },
+  { label: 'AI & Automation',v: 0.84 },
+  { label: 'Agentic AI',     v: 0.82 },
 ];
 
 let radarProg = 0;
@@ -1055,7 +1056,7 @@ function drawRadar(progress) {
 
   const cx = size / 2;
   const cy = size / 2;
-  const R  = size * 0.34; // max radius
+  const R  = size * 0.23; // max radius — smaller to leave room for labels
   const n  = RADAR.length;
   const step = (Math.PI * 2) / n;
   const start = -Math.PI / 2;
@@ -1126,13 +1127,13 @@ function drawRadar(progress) {
   });
 
   // Labels
-  const fontSize = Math.max(10, size * 0.027);
+  const fontSize = Math.max(9, size * 0.024);
   ctx.font = `600 ${fontSize}px Inter, sans-serif`;
   ctx.fillStyle = '#94a3b8';
   ctx.textBaseline = 'middle';
   RADAR.forEach((d, i) => {
     const a = start + i * step;
-    const lr = R + size * 0.1;
+    const lr = size * 0.30; // fixed label radius — keeps labels inside canvas
     const lx = cx + Math.cos(a) * lr;
     const ly = cy + Math.sin(a) * lr;
     ctx.textAlign = Math.cos(a) > 0.05 ? 'left'
@@ -1177,40 +1178,10 @@ if (radarCanvas) radarObserver.observe(radarCanvas);
 ═══════════════════════════════════════════════════ */
 const TL_ITEMS = [
   {
-    year:    '2001 – 2004',
-    role:    'Marketing & Research Executive',
-    company: 'JCDecaux Singapore',
-    desc:    'The inaugural marketer — built the Marketing Department from scratch, establishing processes, brand standards, and reporting frameworks that shaped Singapore\'s transit advertising strategy for years.',
-  },
-  {
-    year:    '2004 – 2010',
-    role:    'Marketing Director',
-    company: 'EYE Corp (now Ooh! Media) · Australia',
-    desc:    'Won the Changi Airport Advertising contract through competitive tender — the organisation\'s highest-value account. Generated $15M+ in revenue across Australian and APAC markets.',
-  },
-  {
-    year:    '2011 – 2017',
-    role:    'VP Marketing & Research',
-    company: 'Moove Media · Singapore',
-    desc:    'Led the iconic SG50 OOH campaign reaching millions nationwide. Established Singapore\'s first OOH accountability study with Nielsen. Six years of double-digit revenue growth.',
-  },
-  {
-    year:    '2017 – 2018',
-    role:    'Marketing Director',
-    company: 'ERC International · Singapore',
-    desc:    'Orchestrated signature events — Super Pitch and Bootcamp — driving a 5% increase in student enrolment through integrated PR, SEO, and event campaigns.',
-  },
-  {
-    year:    '2018 – 2019',
-    role:    'Senior Marketing Manager',
-    company: 'Switcheo Network · Singapore',
-    desc:    '50+ media placements in global blockchain media. Grew social audiences 35% QoQ through influencer activation, community engagement, and SEO.',
-  },
-  {
-    year:    '2019 – 2023',
-    role:    'Head of Marketing',
-    company: 'Overbit.com · Singapore',
-    desc:    'Built the marketing function from zero to a team of 6. Drove 15% global user base growth, 60+ press articles, and expanded into 4 new regional markets.',
+    year:    '2026 – Present',
+    role:    'Strategic Media Adviser (Fractional)',
+    company: 'StrongKeep · Singapore',
+    desc:    'Designing a 90-day outcomes-based brand visibility programme, moving StrongKeep from founder\'s network to a recognised brand in Singapore\'s SMB cybersecurity community.',
   },
   {
     year:    '2023 – 2026',
@@ -1219,10 +1190,40 @@ const TL_ITEMS = [
     desc:    '80% ↑ media impressions · 3,400+ press captures · 80+ Tier-1 pubs · 100K users in 8 months · 55+ podcast episodes · 1M+ impressions. Acquisition by Zscaler, Feb 2026.',
   },
   {
-    year:    '2026 – Present',
-    role:    'Strategic Media Adviser (Fractional)',
-    company: 'StrongKeep · Singapore',
-    desc:    'Designing a 90-day outcomes-based brand visibility programme, moving StrongKeep from founder\'s network to a recognised brand in Singapore\'s SMB cybersecurity community.',
+    year:    '2019 – 2023',
+    role:    'Head of Marketing',
+    company: 'Overbit.com · Singapore',
+    desc:    'Built the marketing function from zero to a team of 6. Drove 15% global user base growth, 60+ press articles, and expanded into 4 new regional markets.',
+  },
+  {
+    year:    '2018 – 2019',
+    role:    'Senior Marketing Manager',
+    company: 'Switcheo Network · Singapore',
+    desc:    '50+ media placements in global blockchain media. Grew social audiences 35% QoQ through influencer activation, community engagement, and SEO.',
+  },
+  {
+    year:    '2017 – 2018',
+    role:    'Marketing Director',
+    company: 'ERC International · Singapore',
+    desc:    'Orchestrated signature events — Super Pitch and Bootcamp — driving a 5% increase in student enrolment through integrated PR, SEO, and event campaigns.',
+  },
+  {
+    year:    '2011 – 2017',
+    role:    'VP Marketing & Research',
+    company: 'Moove Media · Singapore',
+    desc:    'Led the iconic SG50 OOH campaign reaching millions nationwide. Established Singapore\'s first OOH accountability study with Nielsen. Six years of double-digit revenue growth.',
+  },
+  {
+    year:    '2004 – 2010',
+    role:    'Marketing Director',
+    company: 'EYE Corp (now Ooh! Media) · Australia',
+    desc:    'Won the Changi Airport Advertising contract through competitive tender — the organisation\'s highest-value account. Generated $15M+ in revenue across Australian and APAC markets.',
+  },
+  {
+    year:    '2001 – 2004',
+    role:    'Marketing & Research Executive',
+    company: 'JCDecaux Singapore',
+    desc:    'The inaugural marketer — built the Marketing Department from scratch, establishing processes, brand standards, and reporting frameworks that shaped Singapore\'s transit advertising strategy for years.',
   },
 ];
 
